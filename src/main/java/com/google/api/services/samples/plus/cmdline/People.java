@@ -3,6 +3,9 @@ package com.google.api.services.samples.plus.cmdline;
 import java.io.IOException;
 import java.util.List;
 
+import com.google.api.client.googleapis.json.GoogleJsonError;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.HttpResponseException;
 import com.google.api.services.plus.Plus;
 import com.google.api.services.plus.model.PeopleFeed;
 import com.google.api.services.plus.model.Person;
@@ -17,23 +20,41 @@ import com.mongodb.util.JSON;
 /** 锟斤拷员锟斤拷  */
 public class People {
 	/** Get the people list for the social circle of the authenticated user. */
-	public static void listUserProfile(Plus plus, DBCollection meprofileCollection, String userId) throws IOException {
-	    
-		  
+	public static boolean listUserProfile(Plus plus, DBCollection meprofileCollection, String userId) throws IOException {
+
 		View.header1("Get my Google+ profile");
 		System.out.println("userId = " + userId);
-
-		Person person = plus.people().get(userId).execute();
-		 if (person != null) {  
-        	 //System.out.println(person.toPrettyString());            
-        	 try {  
-        		 DBObject dbObject =(DBObject)JSON.parse(person.toPrettyString());  
-        		 meprofileCollection.insert(dbObject);  
-        		 //System.out.println("success insert " + (++count) + " user"); 
-        	 } catch (Exception e) {      		  
-        		 e.printStackTrace();  
-        	 }              
-         }  
+		
+		boolean flag = false;
+		
+		try {
+			Person person = plus.people().get(userId).execute();
+			if (person != null) {  
+				//System.out.println(person.toPrettyString());            
+	        	try {     		 
+	        		DBObject dbObject =(DBObject)JSON.parse(person.toPrettyString());   
+	        		meprofileCollection.insert(dbObject);  
+	        		//System.out.println("success insert " + (++count) + " user"); 
+	        		flag = true;
+	        	} catch (Exception e) {      		  
+	        		 e.printStackTrace();  
+	        	}              
+			}  
+		} catch (GoogleJsonResponseException e) {
+			GoogleJsonError error = e.getDetails();
+			System.err.println("Error code: " + error.getCode());
+		    System.err.println("Error message: " + error.getMessage());
+		    // More error information can be retrieved with error.getErrors().
+		} catch (HttpResponseException e) {
+			// No Json body was returned by the API.
+		    System.err.println("HTTP Status code: " + e.getStatusCode());
+		    System.err.println("HTTP Reason: " + e.getMessage());
+		} catch (IOException e) {
+			// Other errors (e.g connection timeout, etc.).
+		    System.out.println("An error occurred: " + e);
+		}
+		
+		return flag;
 
 /*		
   		Plus.People.List listPeople = plus.people().list("me", "visible");

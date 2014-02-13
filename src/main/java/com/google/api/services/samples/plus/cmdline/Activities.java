@@ -3,11 +3,15 @@ package com.google.api.services.samples.plus.cmdline;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import util.TxtReader;
 import util.TxtWriter;
 
+import com.google.api.client.googleapis.json.GoogleJsonError;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.HttpResponseException;
 import com.google.api.services.plus.Plus;
 import com.google.api.services.plus.model.Activity;
 import com.google.api.services.plus.model.ActivityFeed;
@@ -23,13 +27,14 @@ import com.mongodb.util.JSON;
 public class Activities {
 	
 	/** List the public activities for the authenticated user. */
-	public static ArrayList<String> listUserActivities(Plus plus, DBCollection activityCollection, String userId) throws IOException {
+	public static HashMap<Integer, String> listUserActivities(Plus plus, DBCollection activityCollection, String userId) throws IOException {
 	  
 		View.header1("Listing User's Activities");
 		System.out.println("userId = " + userId);
 		
 		ArrayList<String> activitylist = new ArrayList<String>();
 		
+		HashMap<Integer, String> statusMap = new HashMap<Integer, String>();
 		Boolean flag = true;
 		while(flag) {
 			
@@ -82,16 +87,28 @@ public class Activities {
 					//View.header2("New page of activities");
 					feed = listActivities.execute();
 					activities = feed.getItems();
-				}
-			
-				
-			} catch(Exception e) {	
-				System.err.println(e.getMessage());
-			}
+				}		
+			 } catch (GoogleJsonResponseException e) {
+			      GoogleJsonError error = e.getDetails();
+
+			      System.err.println("Error code: " + error.getCode());
+			      System.err.println("Error message: " + error.getMessage());
+			      statusMap.put(error.getCode(), error.getMessage());
+			      // More error information can be retrieved with error.getErrors().
+			 } catch (HttpResponseException e) {
+			     // No Json body was returned by the API.
+			      
+				 System.err.println("HTTP Status code: " + e.getStatusCode());
+				 System.err.println("HTTP Reason: " + e.getMessage());
+				 statusMap.put(e.getStatusCode(), e.getMessage());
+			 } catch (IOException e) {
+			     // Other errors (e.g connection timeout, etc.).
+			     System.out.println("An error occurred: " + e);			    
+			 }
 			flag = false;
 		}
 		
-		return activitylist;
+		return statusMap;
 		
 /*	  
 		Mongo mg = new Mongo();

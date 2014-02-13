@@ -47,8 +47,11 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.http.HttpResponse;
@@ -195,9 +198,10 @@ public class PlusSample {
 	      /*******************************Database Finish**************************************/
 	      
 	      /*******************************Google+ Initialization*******************************/
+	      int requestNum = 0;
 	      for (int i = 1; i <= 4; i++) {
 	    	  
-	    	  long startTime = System.currentTimeMillis();    //èŽ·å–å¼?§‹æ—¶é—´
+	    	  //long startTime = System.currentTimeMillis();    //èŽ·å–å¼?§‹æ—¶é—´
 	    	  
 	    	  // Set the http proxy to "127.0.0.1:8580" to solution connection time out or read time out
 			  //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 8580));
@@ -232,30 +236,49 @@ public class PlusSample {
 		      for(int j = 0; j < userIdlist.size(); j++) {
 		    	  // run commands
 			      /** People   */
-			      People.listUserProfile(plus, userprofileCollection, userIdlist.get(j));
+			      boolean flag = People.listUserProfile(plus, userprofileCollection, userIdlist.get(j));
+			      if (!flag) {	// not found user
+			    	  continue;
+			      }
 			      
-			      /*String username = "Christmas";
-			      People.searchUserProfile(plus, searchCollection, username);*/
+			      //String username = "Christmas";
+			      //People.searchUserProfile(plus, searchCollection, username);
 			      
 			      //People.ListUserProfileByActivity(plus, listByActivityCollection);
 			      
 			      /** Activities  */
-			      ArrayList<String> activitylist = Activities.listUserActivities(plus, activityCollection, userIdlist.get(j));
-			      
-			      /*String keyword = "awesome";
-			      Activities.searchUserActivities(plus, activityCollection, keyword);*/
-			      
-			      /*View.header1("Get Activity's Comments");
-			      for (int k = 0; k < activitylist.size(); k++) {
-			    	  *//** Comments  *//*
-				      Comments.listUserComment(plus, commentCollection, activitylist.get(k));
-			      }*/
-			      
-			      long endTime = System.currentTimeMillis();    //èŽ·å–ç»“æŸæ—¶é—´
-			      long diffHours = (endTime - startTime) / (1000 * 60 * 60);
-			      if (diffHours > 6) // Google+ application request exhausted 
+			      HashMap<Integer, String> statusMap = Activities.listUserActivities(plus, activityCollection, userIdlist.get(j));
+			      Iterator iter = statusMap.entrySet().iterator();
+			      int getCode = 202;
+			      String getReason = null;
+			      while (iter.hasNext()) {
+			    	  Map.Entry entry = (Map.Entry) iter.next();
+			    	  getCode = (int) entry.getKey();
+			    	  getReason = (String) entry.getValue();
+			      }
+			      // 403 Forbidden Daily Limit Exceeded
+			      if (getCode == 403 && (getReason.equals("rateLimitExceeded") || getReason.equals("Daily Limit Exceeded"))) {
 			    	  break;
-		      } 
+			      }
+			      //String keyword = "awesome";
+			      //Activities.searchUserActivities(plus, activityCollection, keyword);
+			      
+			      //View.header1("Get Activity's Comments");
+			      //for (int k = 0; k < activitylist.size(); k++) {
+			    	  /** Comments  */
+				  //    Comments.listUserComment(plus, commentCollection, activitylist.get(k));
+			      //}
+			      
+			      //long endTime = System.currentTimeMillis();    //èŽ·å–ç»“æŸæ—¶é—´
+			      //long diffHours = (endTime - startTime) / (1000 * 60 * 60);
+			      //if (diffHours > 4) // Google+ application request exhausted 
+			      //	  break;
+			      
+			      /*requestNum++;
+			      if (requestNum > 9000) //Google+ API ÇëÇó´ÎÊý
+			    	  break;*/
+		      }
+		     
 	      }
 	      
 	      /*******************************Database Finish**************************************/

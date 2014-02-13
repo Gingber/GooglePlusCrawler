@@ -72,7 +72,7 @@ public class HttpCilentExample {
 	post.setRequestHeader("Referer", "https://accounts.google.com/ServiceLoginAuth");
 	post.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	
-	//设置登陆时要求的信息，一般就用户名和密码，验证码自己处理了
+	//璁剧疆鐧婚檰鏃惰姹傜殑淇℃伅锛屼竴鑸氨鐢ㄦ埛鍚嶅拰瀵嗙爜锛岄獙璇佺爜鑷繁澶勭悊浜�
     NameValuePair[] data = {
             new BasicNameValuePair("username", "Unmi"),
             new BasicNameValuePair("password", "123456"),

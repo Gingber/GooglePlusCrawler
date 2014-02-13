@@ -1,0 +1,21 @@
+yuqingee01@gmail.com
+
+	GooglePlusProject1: (client_secrets_3.json) 100%
+			Client ID:	121213204221-ep9i5r3kt4qe6ar5m893hi3el7a31n1l.apps.googleusercontent.com
+			Client secret:	NukpYn_3dqCv_6eLNF91qOqR
+	
+	GooglePlusProject: (client_secrets_2.json)
+			Client ID:	305900709680-84beqj1eigkmb2e7srdf3afs788ofood.apps.googleusercontent.com
+			Client secret:	7e8RQe8oNk0MmaxUAbP5w2M-
+			
+			
+/***********************************************************************************************/
+
+kmust.jiangbo@gmail.com
+	MyGooglePlusProject1: (client_secrets_4.json)
+			Client ID:	849571183584-m3qni34771lq35rd4v7v90ubeqp10lc5.apps.googleusercontent.com
+			Client secret:	H7C-PVfP1gPaqMzU2WahGqwy
+
+	MyGooglePlusProject: (client_secrets_1.json)
+			Client ID:	411821161553-vui8sekde0g7jftj20ke65gooc4nq7jk.apps.googleusercontent.com
+			Client secret: IeKQM1jhfCamFL4MbDG7iGS8
