@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Aug 04 23:38:27 CST 2014
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=true
+jarname=GooglePlusCrawlerServer.jar
+manifest.mergeall=true
+manifest.mainclass=com.iie.googleplus.CrawlerServer.CrawlerServer
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

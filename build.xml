@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="GooglePlusCrawler" default="jar" basedir=".">
+	
+	<description>use jar test</description>
+	
+	<property name="src" value="src" />
+	<property name="classes" value="bin/classes" />
+
+	<pathconvert property="lib" pathsep=" ">
+		<mapper>
+			<chainedmapper>
+				<flattenmapper />
+				<globmapper from="*" to="lib/*" />
+			</chainedmapper>
+		</mapper>
+		<!--按照mapper定义的格式组合lib目录下面的所有jar文件，形成诸如lib/jar1.jar lib/jar2.jar的字符串-->
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</pathconvert>
+
+	<!--组合各个路径，构成MANIFEST.MF文件中Class-Path所需的字符串-->
+	<property name="libs" value="${lib}" />
+
+	<!--打印一下刚才构造好的字符串，看看是否符合要求-->
+	<echo>libs   ${libs}</echo>
+
+	<!-- 构造打包时Class-Path需要的路径 结束-->
+
+	<!--创建任务init，负责初始化一些条件-->
+	<target name="init">
+		<!-- 创建存放编译后的class的目录
+			mkdir可以创建多级目录 
+		-->
+		<mkdir dir="${classes}" />
+	</target>
+
+	<target name="compile" depends="init" description="comile target">
+		<javac srcdir="${src}" destdir="${classes}" includeantruntime="true">
+			<classpath>
+				<fileset dir="lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile" description="make jar file">
+		<property name="jarfilename" value="HelloLog4j.jar" />
+		<jar jarfile="${jarfilename}" basedir="${classes}">
+			<manifest>
+				<attribute name="Main-Class" value="oata.HelloLog4j" />
+				<attribute name="Class-Path" value="${libs}">
+				</attribute>
+			</manifest>
+		</jar>
+		
+		<property name="jarfilename2" value="Main.jar" />
+		<jar jarfile="${jarfilename2}" basedir="${classes}">
+			<manifest>
+				<attribute name="Main-Class" value="com.iie.test.ant.Main" />
+				<attribute name="Class-Path" value="${libs}">
+				</attribute>
+			</manifest>
+		</jar>
+		
+	</target>
+	
+	<target name="run" depends="jar">
+		<java jar="${jarfilename}" fork="true">
+		</java>
+		<java jar="${jarfilename2}" fork="true">
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${classes}" />
+		<delete dir="." includes="${ant.project.name}*.jar" />
+	</target>
+</project>

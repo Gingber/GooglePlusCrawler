@@ -1,0 +1,45 @@
+ INFO 2014-08-15 19:35:00 [nodeName] [Receiver.java:64] - 创建一个主动方式获取消息的Receiver:UrgentTask?consumer.prefetchSize=0
+   INFO 2014-08-15 19:35:00 [nodeName] [Receiver.java:64] - 创建一个主动方式获取消息的Receiver:KeyWordAndTopicTask?consumer.prefetchSize=0
+   INFO 2014-08-15 19:35:00 [nodeName] [Receiver.java:64] - 创建一个主动方式获取消息的Receiver:KeyUserTask?consumer.prefetchSize=0
+   INFO 2014-08-15 19:35:00 [nodeName] [Receiver.java:64] - 创建一个主动方式获取消息的Receiver:TASK?consumer.prefetchSize=0
+   INFO 2014-08-15 19:35:00 [nodeName] [Node.java:177] - 启动定时器成功[GPlusAjaxNode- 0]
+  DEBUG 2014-08-15 19:35:04 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:37] - Search Grabber is starting......
+  DEBUG 2014-08-15 19:35:06 [ActiveMQ Session Task-1] [ControlReceiver.java:39] - 【node.NodeName】节点收到工作状态指令NEWSTEP search_start
+  DEBUG 2014-08-15 19:35:06 [ActiveMQ Session Task-1] [ControlReceiver.java:39] - 【node.NodeName】节点收到工作状态指令REPORTSTATUS
+  DEBUG 2014-08-15 19:35:08 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 1 page for keyword: 习包子
+  DEBUG 2014-08-15 19:35:11 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 2 page for keyword: 习包子
+  DEBUG 2014-08-15 19:35:14 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 3 page for keyword: 习包子
+  DEBUG 2014-08-15 19:35:17 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  ERROR 2014-08-15 19:35:17 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:731] - 所有的数据都插入过了
+  DEBUG 2014-08-15 19:35:17 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:59] - Comment Grabber is starting......
+  DEBUG 2014-08-15 19:35:35 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:108] - Crawling 1 page for user's Comment
+  DEBUG 2014-08-15 19:35:36 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  ERROR 2014-08-15 19:35:36 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:731] - 所有的数据都插入过了
+  DEBUG 2014-08-15 19:35:44 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:108] - Crawling 1 page for user's Comment
+  DEBUG 2014-08-15 19:35:44 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  DEBUG 2014-08-15 19:35:52 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:108] - Crawling 1 page for user's Comment
+  DEBUG 2014-08-15 19:35:52 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  DEBUG 2014-08-15 19:35:57 [AjaxMainSearchThread-GPlusAjaxNode- 0] [AjaxMainCrawler.java:152] - Send To Server KeyUser<name>108048571589117535083</name><name>102926429534094978100</name><name>105670560649168960839</name><name>100817770886741499824</name><name>111953785768689976674</name><name>100741005408889140859</name><name>106601657092198578791</name><name>108105216183622857074</name><name>116227847830320913545</name><name>118226254294731019937</name><name>100131845877000838588</name><name>107758205140190207392</name>
+  DEBUG 2014-08-15 19:35:57 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MulityInsertDataBase.java:84] - Success to connect to SQLServer  [IP:]192.168.120.127 [DBName:googleplus140729]
+  DEBUG 2014-08-15 19:35:57 [AjaxMainSearchThread-GPlusAjaxNode- 0] [AjaxMainCrawler.java:127] - Nodename:[GPlusAjaxNode- 0] message:0,user:0,userrel0
+  DEBUG 2014-08-15 19:35:58 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:37] - Search Grabber is starting......
+  DEBUG 2014-08-15 19:35:59 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 1 page for keyword: 习特勒
+  DEBUG 2014-08-15 19:36:02 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 2 page for keyword: 习特勒
+  DEBUG 2014-08-15 19:36:06 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 3 page for keyword: 习特勒
+  DEBUG 2014-08-15 19:36:06 [ActiveMQ Session Task-3] [ControlReceiver.java:39] - 【node.NodeName】节点收到工作状态指令REPORTSTATUS
+  DEBUG 2014-08-15 19:36:08 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  DEBUG 2014-08-15 19:36:09 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:59] - Comment Grabber is starting......
+  DEBUG 2014-08-15 19:36:22 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:108] - Crawling 1 page for user's Comment
+  DEBUG 2014-08-15 19:36:22 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  DEBUG 2014-08-15 19:36:28 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:108] - Crawling 1 page for user's Comment
+  DEBUG 2014-08-15 19:36:28 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  ERROR 2014-08-15 19:36:28 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:731] - 所有的数据都插入过了
+  DEBUG 2014-08-15 19:36:48 [AjaxMainSearchThread-GPlusAjaxNode- 0] [CommentCrawler.java:108] - Crawling 1 page for user's Comment
+  DEBUG 2014-08-15 19:36:48 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:101] - Success to connect to SQLServer [IP:192.168.120.127]  [DBName:googleplus140729]
+  ERROR 2014-08-15 19:36:48 [AjaxMainSearchThread-GPlusAjaxNode- 0] [MySQLOperator.java:731] - 所有的数据都插入过了
+  DEBUG 2014-08-15 19:36:50 [AjaxMainSearchThread-GPlusAjaxNode- 0] [AjaxMainCrawler.java:152] - Send To Server KeyUser<name>114740213000915161563</name><name>110281018906895244358</name><name>109790703964908675921</name><name>107421129466236467758</name><name>106803469846957279122</name><name>114362310528204516563</name><name>107483330219459128481</name><name>113225803796289353336</name><name>104775868255467774137</name><name>110976337507621308884</name><name>115731534887912672741</name><name>105720474254895848780</name><name>111687636357144606503</name>
+  DEBUG 2014-08-15 19:36:50 [AjaxMainSearchThread-GPlusAjaxNode- 0] [AjaxMainCrawler.java:127] - Nodename:[GPlusAjaxNode- 0] message:0,user:0,userrel0
+  DEBUG 2014-08-15 19:36:51 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:37] - Search Grabber is starting......
+  DEBUG 2014-08-15 19:36:53 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 1 page for keyword: 反腐
+  DEBUG 2014-08-15 19:36:56 [AjaxMainSearchThread-GPlusAjaxNode- 0] [SearchCrawler.java:117] - Crawling 2 page for keyword: 反腐
+  
